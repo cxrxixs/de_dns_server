@@ -1,0 +1,50 @@
+{% load static %}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css" crossorigin="anonymous">
+
+<form action="{% url 'filter_de_dns_server' %}" method="get">
+{% csrf_token %}
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<label for="as_number">AS Number</label>
+<input name='as_number' />
+<label for="checked_at">Checked At</label>
+<input name='checked_at' />
+<br/>
+<input type="submit" value="Filter">
+</form>
+<br/>
+
+{% if dns_servers_list %}
+    <table>
+        <tr>
+            <th>ip_address</th>
+            <th>name</th>
+            <th>as_number</th>
+            <th>as_org</th>
+            <th>city</th>
+            <th>version</th>
+            <th>error</th>
+            <th>dnssec</th>
+            <th>reliability</th>
+            <th>checked_at</th>
+            <th>created_at</th>
+        </tr>
+    {% for dns_server in dns_servers_list %}
+        <tr>
+            <td>{{ dns_server.ip_address }}</td>
+            <td>{{ dns_server.name }}</td>
+            <td>{{ dns_server.as_number }}</td>
+            <td>{{ dns_server.as_org }}</td>
+            <td>{{ dns_server.city }}</td>
+            <td>{{ dns_server.version }}</td>
+            <td>{{ dns_server.error }}</td>
+            <td>{{ dns_server.dnssec }}</td>
+            <td>{{ dns_server.reliability }}</td>
+            <td>{{ dns_server.checked_at }}</td>
+            <td>{{ dns_server.created_at }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No dns servers are available.</p>
+{% endif %}
