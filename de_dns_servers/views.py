@@ -25,12 +25,6 @@ def api_de_dns_server(request):
         print(e)
         return HttpResponseServerError()
 
-def get_de_dns_servers_for_checking(request):
-    '''
-    TASK: To update
-    '''
-    pass
-
 def filter_de_dns_server(request):
     try:
         if request.method == 'GET':
