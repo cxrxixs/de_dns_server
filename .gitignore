@@ -22,3 +22,10 @@ lib64
 # Project-specific ignores
 .idea.env
 /venv/
+
+
+
+# Local env
+
+.venv/
+*.org

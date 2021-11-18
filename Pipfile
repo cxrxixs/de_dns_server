@@ -1,0 +1,20 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+ipython = "*"
+importmagic = "*"
+epc = "*"
+isort = "*"
+autoflake = "*"
+
+[packages]
+django-environ = "==0.8.1"
+environ = "==1.0"
+python-dotenv = "==0.19.1"
+Django = "==3.2.9"
+
+[requires]
+python_version = "3.9"
