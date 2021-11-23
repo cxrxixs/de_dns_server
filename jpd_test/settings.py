@@ -10,10 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import os
 from pathlib import Path
+
 import dotenv
 import environ
-import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,20 +23,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 CACHE_TTL = 3600
 
 # load environment variables from .env
-dotenv_file = os.path.join(BASE_DIR, "jpd_test/.env")
+dotenv_file = os.path.join(BASE_DIR, 'jpd_test/.env')
 if os.path.isfile(dotenv_file):
     dotenv.load_dotenv(dotenv_file)
 
-    env = environ.Env(
-        # set casting, default value
-        DEBUG=(bool, False)
-    )
-    # reading .env file
-    environ.Env.read_env()
-    DATABASE_NAME = env('DATABASE_NAME')
-    DATABASE_PASSWORD = env('DATABASE_PASSWORD')
-    DATABASE_USER = env('DATABASE_USER')
-    DATABASE_HOST = env('DATABASE_HOST')
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+# reading .env file
+environ.Env.read_env()
+DATABASE_NAME = env('DATABASE_NAME')
+DATABASE_PASSWORD = env('DATABASE_PASSWORD')
+DATABASE_USER = env('DATABASE_USER')
+DATABASE_HOST = env('DATABASE_HOST')
+DEBUG = env('DEBUG')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -44,9 +46,9 @@ if os.path.isfile(dotenv_file):
 SECRET_KEY = 'django-insecure-3sg9uat)_74$3phn3%sbjq-y*+j(pvt)=_$o94-s&7$b8o8f0&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "192.168.1.102", "de-dns-servers-django.herokuapp.com"]
 
 
 # Application definition
@@ -149,3 +151,6 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGIN_REDIRECT_URL = '/de_dns_servers/'

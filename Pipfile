@@ -9,12 +9,16 @@ importmagic = "*"
 epc = "*"
 isort = "*"
 autoflake = "*"
+sqlalchemy = "*"
+pudb = "*"
 
 [packages]
 django-environ = "==0.8.1"
 environ = "==1.0"
 python-dotenv = "==0.19.1"
 Django = "==3.2.9"
+psycopg2 = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.9"

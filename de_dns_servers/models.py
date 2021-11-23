@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class DeDnsServerRaw(models.Model):
     id = models.AutoField(primary_key=True)
@@ -20,6 +21,7 @@ class DeDnsServerRaw(models.Model):
         managed = True
         db_table = 'de_dns_servers_raw'
 
+
 class DeDnsServer(models.Model):
     id = models.AutoField(primary_key=True)
     ip_address = models.GenericIPAddressField(null=False)
@@ -38,3 +40,15 @@ class DeDnsServer(models.Model):
     class Meta:
         managed = True
         db_table = 'de_dns_servers'
+
+
+class ApiToken(models.Model):
+    id = models.AutoField(primary_key=True)
+    token = models.CharField(max_length=6, unique=True)
+    is_valid = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    revoked_at = models.DateTimeField(null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'api_tokens'

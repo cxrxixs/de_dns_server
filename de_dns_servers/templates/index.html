@@ -9,6 +9,20 @@
 <input name='as_number' />
 <label for="checked_at">Checked At</label>
 <input name='checked_at' />
+<label for="as_org">As Org</label>
+<input name="as_org" />
+<div>
+  <input
+    type="radio"
+    id="exact-match"
+    name="as_org_matching"
+    value="exact"
+    checked="checked"
+  />
+  <label for="exact-match">exact match</label><br />
+  <input type="radio" id="contains" name="as_org_matching" value="contains" />
+  <label for="contains">contains</label><br />
+</div>
 <br/>
 <input type="submit" value="Filter">
 </form>
@@ -22,7 +36,6 @@
             <th>as_number</th>
             <th>as_org</th>
             <th>city</th>
-            <th>version</th>
             <th>error</th>
             <th>dnssec</th>
             <th>reliability</th>
@@ -36,7 +49,6 @@
             <td>{{ dns_server.as_number }}</td>
             <td>{{ dns_server.as_org }}</td>
             <td>{{ dns_server.city }}</td>
-            <td>{{ dns_server.version }}</td>
             <td>{{ dns_server.error }}</td>
             <td>{{ dns_server.dnssec }}</td>
             <td>{{ dns_server.reliability }}</td>
